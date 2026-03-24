@@ -45,8 +45,6 @@ jobs:
 
       - name: 上传构建产物
         uses: actions/upload-artifact@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           name: ${{ matrix.artifact_name }}
           path: ${{ matrix.artifact_name }}
@@ -57,23 +55,15 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
         with:
           path: artifacts/
 
-      - name: 生成发布说明
-        run: |
-          cat << EOF > RELEASE_NOTES.md
-          ## 🎉 OpenGit ${{ github.ref_name }}
-
-          自动构建版本，支持一键打开 Git 仓库网页。
-
-          ### 下载
-          - Linux: opengit-${{ github.ref_name }}-linux-x64.zip
-          EOF
-
       - name: 创建 Draft Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           name: OpenGit ${{ github.ref_name }}
           draft: true
