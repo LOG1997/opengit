@@ -75,7 +75,8 @@ jobs:
       - name: 创建 Draft Release
         uses: softprops/action-gh-release@v1
         with:
-          body_path: RELEASE_NOTES.md
+          name: OpenGit ${{ github.ref_name }}
           draft: true
           prerelease: false
           files: artifacts/**/*.zip
+          generate_release_notes: true
