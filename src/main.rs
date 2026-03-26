@@ -1,7 +1,8 @@
-mod format;
-mod operate;
-use crate::format::{format_git_url, get_git_remote_url};
-use crate::operate::open_in_browser;
+use opengit::{
+    format::{format_git_url, get_git_remote_url},
+    operate::open_in_browser,
+};
+
 fn main() {
     let remote_url = get_git_remote_url();
     if remote_url.is_none() {
