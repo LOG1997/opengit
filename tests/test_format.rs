@@ -1,5 +1,4 @@
 use opengit::format::{AddressType, format_git_url, get_domain_type, get_git_remote_url};
-
 #[test]
 fn domain_type_test() {
     let input = "github.com";

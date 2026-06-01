@@ -1,7 +1,7 @@
-use opengit::{
-    format::{format_git_url, get_git_remote_url},
-    operate::open_in_browser,
-};
+pub mod format;
+pub mod operate;
+use format::{format_git_url, get_git_remote_url};
+use operate::open_in_browser;
 
 fn main() {
     let remote_url = get_git_remote_url();
