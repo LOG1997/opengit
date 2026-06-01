@@ -1,6 +1,6 @@
 [package]
 name = "opengit"
-version = "0.1.2"
+version = "0.0.5"
 edition = "2024"
 
 [profile.release]
